@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "tvmaze-webapp": "apps/tvmaze-webapp",
+    "tvmaze-webapp-e2e": "apps/tvmaze-webapp-e2e"
+  }
+}
