@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IShow } from '../IShow'
+import { ITvShow } from '../ITvShow'
 import {
   IRepository,
   IResponse,
@@ -7,17 +7,18 @@ import {
 } from '@tvmaze-webapp/react-query-crud'
 
 @Singleton
-export class TvShowsRepository implements IRepository<IShow, IResponse> {
+export class TvShowsRepository implements IRepository<ITvShow, IResponse> {
   readonly name = 'shows-repository'
   readonly baseURL = 'https://api.tvmaze.com/search/'
   readonly axiosClient = axios.create({ baseURL: this.baseURL })
 
-  private getData = async (queryString: string) => {
-    const { data } = await this.axiosClient.get(`shows?q=${queryString}`)
+  private getData = async (searchString: string) => {
+    const { data } = await this.axiosClient.get<ITvShow[]>(
+      `shows?q=${searchString}`
+    )
     return data
   }
 
-  getTvShowList = async (searchString: string): Promise<IShow[]> => {
-    return this.getData(searchString)
-  }
+  getTvShowList = async (searchString: string): Promise<ITvShow[]> =>
+    this.getData(searchString)
 }

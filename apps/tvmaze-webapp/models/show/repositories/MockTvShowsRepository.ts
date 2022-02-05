@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { IShow } from '../IShow'
+import { ITvShow } from '../ITvShow'
 import {
   IRepository,
   IResponse,
@@ -7,12 +7,12 @@ import {
 } from '@tvmaze-webapp/react-query-crud'
 
 @Singleton
-export class MockTvShowsRepository implements IRepository<IShow, IResponse> {
+export class MockTvShowsRepository implements IRepository<ITvShow, IResponse> {
   readonly name = 'shows-repository'
   readonly baseURL = '/api/mock-tvshows'
   readonly axiosClient = axios.create({ baseURL: this.baseURL })
 
-  getTvShowList = async (): Promise<IShow[]> => {
+  getTvShowList = async (): Promise<ITvShow[]> => {
     const { data } = await this.axiosClient.get(null)
     return data
   }

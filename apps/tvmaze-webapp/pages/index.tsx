@@ -2,10 +2,10 @@ import { useRouter } from 'next/router'
 import { TvShowsRepository } from '../models/show/repositories/TvShowsRepository'
 import { MockTvShowsRepository } from '../models/show/repositories/MockTvShowsRepository'
 import { IRepository, useRepository } from '@tvmaze-webapp/react-query-crud'
-import { IShow } from '../models/show/IShow'
+import { ITvShow } from '../models/show/ITvShow'
 
 export interface IPageListTvShows {
-  tvShowsRepository: IRepository<IShow, Record<string, unknown>>
+  tvShowsRepository: IRepository<ITvShow, Record<string, unknown>>
 }
 
 export default function PageListTvShows({
@@ -18,23 +18,17 @@ export default function PageListTvShows({
   console.log(tvShowsList)
 
   return (
-    <div>
+    <>
       <style jsx>{`
         .page {
         }
       `}</style>
 
-      <div className="wrapper">
-        <div className="container">
-          <div id="welcome">
-            <h1>
-              <span> Hello there, </span>
-              Welcome tvmaze-web3 👋
-            </h1>
-            <pre>{JSON.stringify(tvShowsList, null, 2)}</pre>
-          </div>
-        </div>
-      </div>
-    </div>
+      <h1>
+        <span> Hello there, </span>
+        Welcome tvmaze-web3 👋
+      </h1>
+      <pre>{JSON.stringify(tvShowsList, null, 2)}</pre>
+    </>
   )
 }

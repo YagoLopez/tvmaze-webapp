@@ -1,6 +1,6 @@
 import { IRepository, IResponse } from '@tvmaze-webapp/react-query-crud'
-import { IShow } from './show/IShow'
+import { ITvShow } from './show/ITvShow'
 
 export interface IPageProps {
-  tvShowsRepository: IRepository<IShow, Record<any, any>>
+  tvShowsRepository: IRepository<ITvShow, Record<any, any>>
 }
