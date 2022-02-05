@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { TvShowsRepository } from '../models/show/repositories/TvShowsRepository'
+import { MockTvShowsRepository } from '../models/show/repositories/MockTvShowsRepository'
 import { IRepository, useRepository } from '@tvmaze-webapp/react-query-crud'
 import { IShow } from '../models/show/IShow'
-import { MockTvShowsRepository } from '../models/show/repositories/MockTvShowsRepository'
 
 export interface IPageListTvShows {
   tvShowsRepository: IRepository<IShow, Record<string, unknown>>

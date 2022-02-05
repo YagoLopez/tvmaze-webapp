@@ -14,7 +14,7 @@ export const useRepository = <T, TError>(
   const useGetTvShowList = (searchString: string) =>
     useQuery(
       [repository.name, searchString],
-      () => repository.getShowList(searchString),
+      () => repository.getTvShowList(searchString),
       config
     )
 

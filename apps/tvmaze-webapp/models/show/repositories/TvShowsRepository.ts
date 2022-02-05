@@ -17,7 +17,7 @@ export class TvShowsRepository implements IRepository<IShow, IResponse> {
     return data
   }
 
-  getShowList = async (searchString: string): Promise<IShow[]> => {
+  getTvShowList = async (searchString: string): Promise<IShow[]> => {
     return this.getData(searchString)
   }
 }
