@@ -1,10 +1,16 @@
 import { useRouter } from 'next/router'
-import { ShowsRepository } from '../models/show/repositories/ShowsRepository'
-import { useRepository } from '@tvmaze-webapp/react-query-crud'
+import { TvShowsRepository } from '../models/show/repositories/TvShowsRepository'
+import { IRepository, useRepository } from '@tvmaze-webapp/react-query-crud'
+import { IShow } from '../models/show/IShow'
+import { MockTvShowsRepository } from '../models/show/repositories/MockTvShowsRepository'
+
+export interface IPageListTvShows {
+  tvShowsRepository: IRepository<IShow, Record<string, unknown>>
+}
 
 export default function PageListTvShows({
-  tvShowsRepository = new ShowsRepository(),
-}: Record<any, any>) {
+  tvShowsRepository = new MockTvShowsRepository(),
+}: IPageListTvShows) {
   const router = useRouter()
   const { useGetTvShowList } = useRepository(tvShowsRepository)
   const { data: tvShowsList, isLoading, error } = useGetTvShowList('girls')
