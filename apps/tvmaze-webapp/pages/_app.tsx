@@ -1,6 +1,8 @@
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 import { QueryClient, QueryClientProvider } from 'react-query'
+import { Provider } from 'react-redux'
+import { store } from '../redux/store'
 
 export default function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -13,7 +15,9 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
       </Head>
       <QueryClientProvider client={new QueryClient()}>
-        <Component {...pageProps} />
+        <Provider store={store}>
+          <Component {...pageProps} />
+        </Provider>
       </QueryClientProvider>
     </>
   )
