@@ -1,0 +1,13 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Run" type="js.build_tools.nx">
+    <node-interpreter value="project" />
+    <nxfile value="$PROJECT_DIR$/nx.json" />
+    <tasks>
+      <task value="tvmaze-webapp:serve" />
+    </tasks>
+    <envs />
+    <method v="2">
+      <option name="LaunchBrowser.Before.Run" url="http://192.168.18.9:4200/" />
+    </method>
+  </configuration>
+</component>

@@ -1,22 +1,16 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { ITvShow } from '../models/show/ITvShow'
 
-const initialState: { tvShow: ITvShow } = { tvShow: null }
+const initialState = { score: null, show: null }
 
 export const tvShowSlice = createSlice({
   name: 'tvShow',
   initialState,
   reducers: {
     setTvShow: (state, action: PayloadAction<ITvShow>) => {
-      state.tvShow = action.payload
+      state.score = action.payload.score
+      state.show = action.payload.show
     },
-    // getTvShow: (state) => {
-    //   return state
-    // },
-    // todo: remove comments
-    // incrementByAmount: (state, action: PayloadAction<number>) => {
-    //   state.value += action.payload
-    // },
   },
 })
 

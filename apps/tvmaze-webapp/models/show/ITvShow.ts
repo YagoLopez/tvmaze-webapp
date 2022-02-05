@@ -15,14 +15,14 @@ export interface ITvShow {
     premiered: string
     ended: string
     officialSite: string
-    schedule: Record<string, string[]>
-    rating: { average: string }
+    schedule: { time: string; days: string[] }
+    rating: { average: number }
     weight: number
     network: {
       id: number
       name: string
       country: ICountry
-      officialSite: string
+      officialSite?: string
     }
     webChannel: { id: number; name: string; country: ICountry }
     dvdCountry: null

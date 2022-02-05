@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import { TvShowsRepository } from '../models/show/repositories/TvShowsRepository'
 import { MockTvShowsRepository } from '../models/show/repositories/MockTvShowsRepository'
 import { IRepository, useRepository } from '@tvmaze-webapp/react-query-crud'
+import { useState } from 'react'
 import { ITvShow } from '../models/show/ITvShow'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../redux/store'
@@ -17,7 +18,8 @@ export default function PageListTvShows({
 }: IPageListTvShows) {
   const router = useRouter()
   const { useGetTvShowList } = useRepository(tvShowsRepository)
-  const { data: tvShowsList, isLoading, error } = useGetTvShowList('girls')
+  const [searchString, setSearchString] = useState('girls')
+  const { data: tvShowsList, isLoading, error } = useGetTvShowList(searchString)
 
   console.log(tvShowsList)
 
@@ -31,7 +33,7 @@ export default function PageListTvShows({
     dispatch(decrement())
   }
   const onClickSetTvShow = () => {
-    console.log(tvShowsList[0])
+    console.log(tvShowsList[count])
     dispatch(setTvShow(tvShowsList[count]))
   }
 
