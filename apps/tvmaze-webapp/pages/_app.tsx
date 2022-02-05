@@ -1,18 +1,16 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import './styles.css';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
-function CustomApp({ Component, pageProps }: AppProps) {
+export default function CustomApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <Head>
-        <title>Welcome to tvmaze-webapp!</title>
+        <title>Welcome to tvmaze-web!</title>
       </Head>
-      <main className="app">
+      <QueryClientProvider client={new QueryClient()}>
         <Component {...pageProps} />
-      </main>
+      </QueryClientProvider>
     </>
   );
 }
-
-export default CustomApp;
