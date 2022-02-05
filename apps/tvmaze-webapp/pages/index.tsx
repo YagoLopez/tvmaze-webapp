@@ -9,6 +9,14 @@ import { RootState } from '../redux/store'
 import { decrement, increment } from '../redux/counterSlice'
 import { setTvShow } from '../redux/tvShowSlice'
 
+import List from '@mui/material/List'
+import ListItem from '@mui/material/ListItem'
+import Divider from '@mui/material/Divider'
+import ListItemText from '@mui/material/ListItemText'
+import ListItemAvatar from '@mui/material/ListItemAvatar'
+import Avatar from '@mui/material/Avatar'
+import Typography from '@mui/material/Typography'
+
 export interface IPageListTvShows {
   tvShowsRepository: IRepository<ITvShow, Record<string, unknown>>
 }
@@ -18,7 +26,7 @@ export default function PageListTvShows({
 }: IPageListTvShows) {
   const router = useRouter()
   const { useGetTvShowList } = useRepository(tvShowsRepository)
-  const [searchString, setSearchString] = useState('girls')
+  const [searchString, setSearchString] = useState<string>('girls')
   const { data: tvShowsList, isLoading, error } = useGetTvShowList(searchString)
 
   console.log(tvShowsList)
@@ -39,10 +47,34 @@ export default function PageListTvShows({
 
   return (
     <>
-      <style jsx>{`
-        .page {
-        }
-      `}</style>
+      {(tvShowsList as ITvShow[]).map((tvShow: ITvShow) => {
+        const { show } = tvShow
+        return <div key={show.id}>{show.id}</div>
+      })}
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+        <ListItem alignItems="flex-start">
+          <ListItemAvatar>
+            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+          </ListItemAvatar>
+          <ListItemText
+            primary="Brunch this weekend?"
+            secondary={
+              <>
+                <Typography
+                  sx={{ display: 'inline' }}
+                  component="span"
+                  variant="body2"
+                  color="text.primary"
+                >
+                  Ali Connors
+                </Typography>
+                {" — I'll be in your neighborhood doing errands this…"}
+              </>
+            }
+          />
+        </ListItem>
+        <Divider variant="inset" component="li" />
+      </List>
 
       <h1>
         <span> Hello there, </span>

@@ -3,6 +3,9 @@ import Head from 'next/head'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { Provider } from 'react-redux'
 import { store } from '../redux/store'
+import { CssBaseline } from '@mui/material'
+import TopAppBar from '../components/TopAppBar/TopAppBar'
+import './styles.css'
 
 export default function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,6 +17,8 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Crypto currencies comparator" />
         <link rel="icon" type="image/svg+xml" href="/favicon.png" />
       </Head>
+      <CssBaseline />
+      <TopAppBar />
       <QueryClientProvider client={new QueryClient()}>
         <Provider store={store}>
           <Component {...pageProps} />
