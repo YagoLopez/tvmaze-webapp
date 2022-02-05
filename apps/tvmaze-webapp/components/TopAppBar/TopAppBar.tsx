@@ -10,7 +10,8 @@ import styles from './topappbar.module.css'
 
 export default function TopAppBar() {
   const router = useRouter()
-  const isCustomPeriodRoute = router.route === '/custom-period'
+  // todo: review
+  const isCustomPeriodRoute = router.route === '/search'
   const onClickBack = () => router.back()
   return (
     <Box sx={{ flexGrow: 1 }}>
