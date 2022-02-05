@@ -21,7 +21,7 @@ export interface IPageListTvShows {
   tvShowsRepository: IRepository<ITvShow, Record<string, unknown>>
 }
 
-export default function PageListTvShows({
+export default function PageIndex({
   tvShowsRepository = new MockTvShowsRepository(),
 }: IPageListTvShows) {
   const router = useRouter()
@@ -47,35 +47,6 @@ export default function PageListTvShows({
 
   return (
     <>
-      {(tvShowsList as ITvShow[]).map((tvShow: ITvShow) => {
-        const { show } = tvShow
-        return <div key={show.id}>{show.id}</div>
-      })}
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="Brunch this weekend?"
-            secondary={
-              <>
-                <Typography
-                  sx={{ display: 'inline' }}
-                  component="span"
-                  variant="body2"
-                  color="text.primary"
-                >
-                  Ali Connors
-                </Typography>
-                {" — I'll be in your neighborhood doing errands this…"}
-              </>
-            }
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-      </List>
-
       <h1>
         <span> Hello there, </span>
         Welcome tvmaze-web3 👋

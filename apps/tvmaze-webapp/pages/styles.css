@@ -28,3 +28,8 @@ body{
     opacity: 1;
   }
 }
+
+ul > div > div > p > div > p {
+  margin-top: 0.4em;
+  margin-bottom: 0;
+}
