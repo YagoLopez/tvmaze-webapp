@@ -72,6 +72,7 @@ export default function PageIndex() {
             />
             <div style={CSS.search_container}>
               <Button
+                id="btn-search"
                 sx={CSS.btn_search}
                 disabled={!isValid(searchString)}
                 onClick={onSearchBtn}
@@ -81,6 +82,7 @@ export default function PageIndex() {
                 Search
               </Button>
               <Button
+                id="btn-reset"
                 color="error"
                 sx={CSS.btn_search}
                 onClick={onResetBtn}
