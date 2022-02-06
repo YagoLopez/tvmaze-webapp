@@ -1,6 +1,6 @@
+// todo: extract inline styles
 import { ListItemButton } from '@mui/material'
 import ListItemText from '@mui/material/ListItemText'
-import Typography from '@mui/material/Typography'
 import { ITvShow } from '../../models/show/ITvShow'
 import { setTvShow } from '../../redux/tvShowSlice'
 import { useDispatch } from 'react-redux'
@@ -20,35 +20,48 @@ export default function TvShowListItem({ tvShow, index }: IProps) {
     tvShow: ITvShow
   ) => dispatch(setTvShow(tvShow))
 
-  const truncate = (str, n) =>
+  const truncate = (str, n): string =>
     str.length > n ? `${str.substring(0, n - 1)}&hellip;` : str
 
+  const getImage = (show: { image: { medium: string } }): string =>
+    show.image?.medium ? show.image.medium : '/img-placeholder.jpg'
+
   return (
-    <ListItemButton onClick={(event) => onClickTvShow(event, index, tvShow)}>
+    <ListItemButton
+      style={{ paddingTop: 0, paddingBottom: 0 }}
+      onClick={(event) => onClickTvShow(event, index, tvShow)}
+    >
       <ListItemText
-        secondary={
+        primary={
           <div
-            datatype="item"
-            style={{ display: 'flex', alignItems: 'center' }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              fontSize: 'smaller',
+              color: 'GrayText',
+            }}
           >
             <div>
               <img
-                src={show?.image?.medium}
+                src={getImage(show)}
                 alt="thumbnail"
                 style={{ height: '8em' }}
               />
             </div>
+
             <div style={{ marginLeft: '1.5em' }}>
               <div>Title: {show.name}</div>
+
               {show.summary === null ? (
                 <div>No Information Available</div>
               ) : (
-                <span
+                <div
                   dangerouslySetInnerHTML={{
                     __html: truncate(show.summary, 100),
                   }}
-                ></span>
+                ></div>
               )}
+
               <div>Language: {show.language}</div>
             </div>
           </div>

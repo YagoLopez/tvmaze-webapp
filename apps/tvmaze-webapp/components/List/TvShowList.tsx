@@ -10,7 +10,7 @@ export default function TvShowList({ tvShowList = [] }: IProps) {
   return (
     <List
       sx={{
-        marginTop: '0.1em',
+        marginTop: '0.4em',
         marginBottom: '1em',
         width: '100%',
         maxWidth: '100%',
