@@ -1,8 +1,8 @@
 import { IRepository } from './IRepository'
 import { useQuery } from 'react-query'
 
-export const useRepository = <T, TError>(
-  repository: IRepository<T, TError>,
+export const useRepository = <T>(
+  repository: IRepository<T>,
   refetchInterval = 0
 ) => {
   const config = {

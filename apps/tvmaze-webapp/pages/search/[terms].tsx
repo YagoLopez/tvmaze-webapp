@@ -9,7 +9,7 @@ import Loader from '../../components/Loader/Loader'
 import AppError from '../../components/AppError/AppError'
 
 export interface IProps {
-  tvShowsRepository: IRepository<ITvShow, Record<string, unknown>>
+  tvShowsRepository: IRepository<ITvShow>
 }
 
 export default function PageSearchResults({

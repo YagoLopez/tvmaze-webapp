@@ -1,5 +1,5 @@
-export interface IRepository<T, TError> {
+export interface IRepository<T> {
   readonly name: string
   readonly baseURL: string
-  getTvShowList(searchString: string): Promise<T[] | TError>
+  getTvShowList(searchString: string): Promise<T[]>
 }

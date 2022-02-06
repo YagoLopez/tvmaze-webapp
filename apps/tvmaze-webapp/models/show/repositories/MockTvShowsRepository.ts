@@ -1,14 +1,10 @@
 import axios from 'axios'
 import { ITvShow } from '../ITvShow'
-import {
-  IRepository,
-  IResponse,
-  Singleton,
-} from '@tvmaze-webapp/react-query-crud'
+import { IRepository, Singleton } from '@tvmaze-webapp/react-query-crud'
 
 @Singleton
-export class MockTvShowsRepository implements IRepository<ITvShow, IResponse> {
-  readonly name = 'shows-repository'
+export class MockTvShowsRepository implements IRepository<ITvShow> {
+  readonly name = 'mock-shows-repository'
   readonly baseURL = '/api/mock-tvshows'
   readonly axiosClient = axios.create({ baseURL: this.baseURL })
 

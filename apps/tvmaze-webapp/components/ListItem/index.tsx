@@ -1,4 +1,3 @@
-// todo: extract inline styles
 import { ListItemButton } from '@mui/material'
 import ListItemText from '@mui/material/ListItemText'
 import { ITvShow } from '../../models/show/ITvShow'
@@ -6,20 +5,19 @@ import { setTvShow } from '../../redux/tvShowSlice'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { getImage } from '../../utils'
+import { CSS } from './styles'
 
 interface IProps {
   tvShow: ITvShow
-  index: number
 }
 
-export default function TvShowListItem({ tvShow, index }: IProps) {
+export default function TvShowListItem({ tvShow }: IProps) {
   const { show } = tvShow
   const dispatch = useDispatch()
   const router = useRouter()
 
   const onClickTvShow = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number,
     tvShow: ITvShow
   ) => {
     dispatch(setTvShow(tvShow))
@@ -32,27 +30,16 @@ export default function TvShowListItem({ tvShow, index }: IProps) {
   return (
     <ListItemButton
       style={{ paddingTop: 0, paddingBottom: 0 }}
-      onClick={(event) => onClickTvShow(event, index, tvShow)}
+      onClick={(event) => onClickTvShow(event, tvShow)}
     >
       <ListItemText
         primary={
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              fontSize: 'smaller',
-              color: 'GrayText',
-            }}
-          >
+          <div style={CSS.item_text}>
             <div>
-              <img
-                src={getImage(show)}
-                alt="thumbnail"
-                style={{ height: '8em' }}
-              />
+              <img src={getImage(show)} alt="thumbnail" style={CSS.show_img} />
             </div>
 
-            <div style={{ marginLeft: '1.5em' }}>
+            <div style={CSS.summary}>
               <div>Title: {show.name}</div>
               {show.summary === null ? (
                 <>No Information Available</>
