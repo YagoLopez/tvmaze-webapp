@@ -20,7 +20,7 @@ export default function TvShowListItem({ tvShow, index }: IProps) {
     tvShow: ITvShow
   ) => dispatch(setTvShow(tvShow))
 
-  const truncate = (str, n): string =>
+  const truncate = (str: string, n: number): string =>
     str.length > n ? `${str.substring(0, n - 1)}&hellip;` : str
 
   const getImage = (show: { image: { medium: string } }): string =>
@@ -51,7 +51,6 @@ export default function TvShowListItem({ tvShow, index }: IProps) {
 
             <div style={{ marginLeft: '1.5em' }}>
               <div>Title: {show.name}</div>
-
               {show.summary === null ? (
                 <div>No Information Available</div>
               ) : (
@@ -61,7 +60,6 @@ export default function TvShowListItem({ tvShow, index }: IProps) {
                   }}
                 ></div>
               )}
-
               <div>Language: {show.language}</div>
             </div>
           </div>

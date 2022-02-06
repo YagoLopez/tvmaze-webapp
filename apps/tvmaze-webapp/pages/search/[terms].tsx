@@ -1,3 +1,4 @@
+// todo: comentar en readme.md que network requests están cacheadas
 import { useRouter } from 'next/router'
 import { TvShowsRepository } from '../../models/show/repositories/TvShowsRepository'
 import { MockTvShowsRepository } from '../../models/show/repositories/MockTvShowsRepository'
