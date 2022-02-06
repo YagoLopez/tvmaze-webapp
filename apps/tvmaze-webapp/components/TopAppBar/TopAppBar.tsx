@@ -32,7 +32,7 @@ export default function TopAppBar() {
             sx={{ flexGrow: 1 }}
             className={styles.padding}
           >
-            Crypto Comparator
+            Tv Maze Web App
           </Typography>
           <Button color="inherit">By Yago López</Button>
         </Toolbar>

@@ -1,17 +1,19 @@
+// todo: add PWA
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import TextField from '@mui/material/TextField'
 import { InputAdornment, Paper } from '@mui/material'
-import ScreenSearchDesktopTwoToneIcon from '@mui/icons-material/ScreenSearchDesktopTwoTone'
 import Button from '@mui/material/Button'
-import LocalMoviesTwoToneIcon from '@mui/icons-material/LocalMoviesTwoTone'
 import { CONST } from '../constants'
+import SlideshowTwoToneIcon from '@mui/icons-material/SlideshowTwoTone'
+import ScreenSearchDesktopTwoToneIcon from '@mui/icons-material/ScreenSearchDesktopTwoTone'
+import Typography from '@mui/material/Typography'
 
 export default function PageIndex() {
   const router = useRouter()
   const [searchString, setSearchString] = useState<string>('')
 
-  const onClickSearch = () =>
+  const onSearchBtn = () =>
     router.push(`/search/${searchString}`, undefined, { shallow: true })
 
   const onChangeSearchString = (event) => setSearchString(event.target.value)
@@ -28,10 +30,13 @@ export default function PageIndex() {
   const onKeyDown = (event) => {
     if (event.key === 'Enter' && isValid(searchString)) {
       console.log('do validate')
-      onClickSearch()
+      onSearchBtn()
     }
   }
 
+  const onResetBtn = () => setSearchString('')
+
+  // todo: remove logs and comments
   console.log(searchString)
 
   // const count = useSelector((state: RootState) => state.counter.value)
@@ -45,7 +50,9 @@ export default function PageIndex() {
 
   return (
     <div>
-      <h1>TvMaze Web App</h1>
+      <Typography variant="h6" gutterBottom component="div">
+        🎞️ Search for Tv Shows
+      </Typography>
       <Paper elevation={3}>
         <TextField
           error={showValidationMsg(searchString)}
@@ -58,7 +65,7 @@ export default function PageIndex() {
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <LocalMoviesTwoToneIcon />
+                <ScreenSearchDesktopTwoToneIcon />
               </InputAdornment>
             ),
           }}
@@ -66,11 +73,18 @@ export default function PageIndex() {
         <div>
           <Button
             disabled={!isValid(searchString)}
-            onClick={onClickSearch}
+            onClick={onSearchBtn}
             variant="contained"
-            startIcon={<ScreenSearchDesktopTwoToneIcon />}
+            startIcon={<SlideshowTwoToneIcon />}
           >
             Search
+          </Button>
+          <Button
+            onClick={onResetBtn}
+            variant="contained"
+            startIcon={<SlideshowTwoToneIcon />}
+          >
+            Reset
           </Button>
         </div>
       </Paper>
