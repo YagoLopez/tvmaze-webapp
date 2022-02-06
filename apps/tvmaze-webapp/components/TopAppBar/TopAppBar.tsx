@@ -10,14 +10,13 @@ import styles from './topappbar.module.css'
 
 export default function TopAppBar() {
   const router = useRouter()
-  // todo: review
-  const isCustomPeriodRoute = router.route === '/search'
+  const isShowBackIcon = router.route !== '/'
   const onClickBack = () => router.back()
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
         <Toolbar>
-          {isCustomPeriodRoute && (
+          {isShowBackIcon && (
             <IconButton
               sx={{ color: 'white' }}
               aria-label="back"

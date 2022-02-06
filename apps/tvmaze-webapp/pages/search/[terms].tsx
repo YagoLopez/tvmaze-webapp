@@ -1,6 +1,5 @@
 // todo: comentar en readme.md que network requests están cacheadas
 // todo: fav icon
-// todo: back arrow icon on app bar
 import { useRouter } from 'next/router'
 import { TvShowsRepository } from '../../models/show/repositories/TvShowsRepository'
 import { MockTvShowsRepository } from '../../models/show/repositories/MockTvShowsRepository'

@@ -1,4 +1,3 @@
-// todo: remove material libs
 // todo: redirect to index if no show in store
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
