@@ -11,14 +11,12 @@ interface IProps {
 export default function TvShowList({ tvShowList = [] }: IProps) {
   const onFabClick = () => (window as any).scrollTo(0, 0)
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <List
         sx={{
           marginTop: '0.4em',
           marginBottom: '1em',
-          width: '100%',
-          maxWidth: '100%',
-          bgcolor: 'background.paper',
+          width: '700px',
         }}
       >
         {tvShowList.map((tvShow: ITvShow, index: number) => (
