@@ -1,10 +1,8 @@
 // todo: add go to top fab icon
-// todo: add animation
 // todo: remove material libs
 // todo: redirect to index if no show in store
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
-import { useTheme } from '@mui/material/styles'
 import Box from '@mui/material/Box'
 import Card from '@mui/material/Card'
 import CardContent from '@mui/material/CardContent'
@@ -17,44 +15,27 @@ import ArrowCircleRightTwoToneIcon from '@mui/icons-material/ArrowCircleRightTwo
 import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTone'
 import { getImage } from '../../utils'
 import { useRouter } from 'next/router'
+import { CSS } from './styles'
 
 export default function MediaControlCard() {
   const tvShow: ITvShow = useSelector((state: RootState) => state.tvShow)
   const { show } = tvShow
   const router = useRouter()
   const onGoBackBtn = () => router.back()
-  // const theme = useTheme()
 
   console.log(show)
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        width: '100vw',
-        height: '85vh',
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginTop: '0.5em',
-      }}
-    >
-      <Card
-        sx={{
-          display: 'flex',
-          width: 500,
-          borderColor: 'lightgrey',
-          borderStyle: 'solid',
-          borderWidth: '1px',
-        }}
-      >
+    <div className="scale-in-center" style={CSS.container}>
+      <Card sx={CSS.card}>
         <CardMedia
           component="img"
-          sx={{ width: '40%' }}
+          sx={CSS.card_media}
           image={getImage(show)}
           alt="Tv Show Image Cover"
         />
-        <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-          <CardContent sx={{ flex: '1 0 auto' }}>
+        <Box sx={CSS.box}>
+          <CardContent sx={CSS.card_content}>
             <Typography component="div" variant="h5">
               {show.name}
             </Typography>
@@ -86,7 +67,7 @@ export default function MediaControlCard() {
               Return
             </Button>
             <Button
-              sx={{ marginLeft: '8px' }}
+              sx={CSS.btn}
               color="secondary"
               variant="contained"
               target="_blank"
