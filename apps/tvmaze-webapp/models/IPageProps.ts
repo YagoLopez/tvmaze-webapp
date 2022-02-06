@@ -1,4 +1,4 @@
-import { IRepository, IResponse } from '@tvmaze-webapp/react-query-crud'
+import { IRepository } from '@tvmaze-webapp/react-query-crud'
 import { ITvShow } from './show/ITvShow'
 
 export interface IPageProps {

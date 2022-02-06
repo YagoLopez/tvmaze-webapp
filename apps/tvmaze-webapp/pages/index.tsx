@@ -2,12 +2,17 @@
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import TextField from '@mui/material/TextField'
-import { InputAdornment, Paper } from '@mui/material'
+import { InputAdornment } from '@mui/material'
 import Button from '@mui/material/Button'
 import { CONST } from '../constants'
 import SlideshowTwoToneIcon from '@mui/icons-material/SlideshowTwoTone'
 import ScreenSearchDesktopTwoToneIcon from '@mui/icons-material/ScreenSearchDesktopTwoTone'
+import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone'
 import Typography from '@mui/material/Typography'
+import { CSS } from './styles'
+import Card from '@mui/material/Card'
+import Box from '@mui/material/Box'
+import CardContent from '@mui/material/CardContent'
 
 export default function PageIndex() {
   const router = useRouter()
@@ -21,6 +26,8 @@ export default function PageIndex() {
   const isValid = (searchString: string): boolean =>
     searchString.length > CONST.MIN_LENGTH
 
+  const onResetBtn = () => setSearchString('')
+
   const showValidationMsg = (searchString: string): boolean =>
     !isValid(searchString) && searchString.length > 0
 
@@ -29,65 +36,63 @@ export default function PageIndex() {
 
   const onKeyDown = (event) => {
     if (event.key === 'Enter' && isValid(searchString)) {
-      console.log('do validate')
       onSearchBtn()
     }
   }
 
-  const onResetBtn = () => setSearchString('')
-
-  // todo: remove logs and comments
-  console.log(searchString)
-
-  // const count = useSelector((state: RootState) => state.counter.value)
-  // const dispatch = useDispatch()
-  // const onClickIncrement = () => {
-  //   dispatch(increment())
-  // }
-  // const onClickDecrement = () => {
-  //   dispatch(decrement())
-  // }
-
   return (
-    <div>
-      <Typography variant="h6" gutterBottom component="div">
-        🎞️ Search for Tv Shows
-      </Typography>
-      <Paper elevation={3}>
-        <TextField
-          error={showValidationMsg(searchString)}
-          value={searchString}
-          onChange={onChangeSearchString}
-          onKeyDown={onKeyDown}
-          helperText={getHelperText(searchString)}
-          id="input_search"
-          label={CONST.INPUT_LABEL}
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <ScreenSearchDesktopTwoToneIcon />
-              </InputAdornment>
-            ),
-          }}
-        />
-        <div>
-          <Button
-            disabled={!isValid(searchString)}
-            onClick={onSearchBtn}
-            variant="contained"
-            startIcon={<SlideshowTwoToneIcon />}
-          >
-            Search
-          </Button>
-          <Button
-            onClick={onResetBtn}
-            variant="contained"
-            startIcon={<SlideshowTwoToneIcon />}
-          >
-            Reset
-          </Button>
-        </div>
-      </Paper>
+    <div className="scale-in-center" style={CSS.container}>
+      <Card sx={CSS.card_search}>
+        <Box sx={CSS.box}>
+          <CardContent sx={CSS.card_content}>
+            <Typography
+              variant="h6"
+              gutterBottom
+              component="div"
+              className="index-title"
+            >
+              🎞️ Search for Tv Shows
+            </Typography>
+            <TextField
+              sx={CSS.search_container}
+              error={showValidationMsg(searchString)}
+              value={searchString}
+              onChange={onChangeSearchString}
+              onKeyDown={onKeyDown}
+              helperText={getHelperText(searchString)}
+              id="input_search"
+              label={CONST.INPUT_LABEL}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <ScreenSearchDesktopTwoToneIcon />
+                  </InputAdornment>
+                ),
+              }}
+            />
+            <div style={CSS.search_container}>
+              <Button
+                sx={CSS.btn_search}
+                disabled={!isValid(searchString)}
+                onClick={onSearchBtn}
+                variant="contained"
+                startIcon={<SlideshowTwoToneIcon />}
+              >
+                Search
+              </Button>
+              <Button
+                color="error"
+                sx={CSS.btn_search}
+                onClick={onResetBtn}
+                variant="contained"
+                startIcon={<HighlightOffTwoToneIcon />}
+              >
+                Reset
+              </Button>
+            </div>
+          </CardContent>
+        </Box>
+      </Card>
     </div>
   )
 }

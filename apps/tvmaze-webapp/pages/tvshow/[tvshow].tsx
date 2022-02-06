@@ -1,4 +1,3 @@
-// todo: add go to top fab icon
 // todo: remove material libs
 // todo: redirect to index if no show in store
 import { useSelector } from 'react-redux'
@@ -9,21 +8,18 @@ import CardContent from '@mui/material/CardContent'
 import CardMedia from '@mui/material/CardMedia'
 import Typography from '@mui/material/Typography'
 import { ITvShow } from '../../models/show/ITvShow'
-import { CardActions } from '@mui/material'
 import Button from '@mui/material/Button'
 import ArrowCircleRightTwoToneIcon from '@mui/icons-material/ArrowCircleRightTwoTone'
 import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTone'
 import { getImage } from '../../utils'
 import { useRouter } from 'next/router'
-import { CSS } from './styles'
+import { CSS } from '../styles'
 
 export default function MediaControlCard() {
   const tvShow: ITvShow = useSelector((state: RootState) => state.tvShow)
-  const { show } = tvShow
   const router = useRouter()
+  const { show } = tvShow
   const onGoBackBtn = () => router.back()
-
-  console.log(show)
 
   return (
     <div className="scale-in-center" style={CSS.container}>
@@ -39,7 +35,6 @@ export default function MediaControlCard() {
             <Typography component="div" variant="h5">
               {show.name}
             </Typography>
-
             <Typography variant="body2" color="text.secondary" component="div">
               {show.summary === null ? (
                 <>No Information Available</>
@@ -57,8 +52,9 @@ export default function MediaControlCard() {
               <div>📺 Network: {show?.network?.name}</div>
             </Typography>
           </CardContent>
-          <CardActions>
+          <div>
             <Button
+              sx={CSS.btn}
               color="primary"
               variant="contained"
               startIcon={<ArrowCircleLeftTwoToneIcon />}
@@ -76,7 +72,7 @@ export default function MediaControlCard() {
             >
               Website
             </Button>
-          </CardActions>
+          </div>
         </Box>
       </Card>
     </div>
