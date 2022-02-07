@@ -1,4 +1,4 @@
-const MIN_LENGTH = 3
+const MIN_LENGTH = 4
 
 export const CONST = {
   MIN_LENGTH,

@@ -24,7 +24,7 @@ export default function PageIndex() {
   const onChangeSearchString = (event) => setSearchString(event.target.value)
 
   const isValid = (searchString: string): boolean =>
-    searchString.length > CONST.MIN_LENGTH
+    searchString.length >= CONST.MIN_LENGTH
 
   const onResetBtn = () => setSearchString('')
 
