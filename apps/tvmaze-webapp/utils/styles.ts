@@ -10,6 +10,8 @@ export const CSS = {
   card: {
     display: 'flex',
     width: 500,
+    maxHeight: 500,
+    overflowY: 'auto',
     borderColor: 'lightgrey',
     borderStyle: 'solid',
     borderWidth: '1px',
