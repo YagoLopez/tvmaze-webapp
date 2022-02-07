@@ -14,7 +14,7 @@ import { getImage } from '../../utils'
 import { useRouter } from 'next/router'
 import { CSS } from '../../utils/styles'
 
-export default function MediaControlCard() {
+export default function PageTvShowDetail() {
   const tvShow: ITvShow = useSelector((state: RootState) => state.tvShow)
   const router = useRouter()
   const { show } = tvShow

@@ -7,6 +7,7 @@ import { TvShowsRepository } from '../models/show/repositories/TvShowsRepository
 import TvShowList from '../components/List/TvShowList'
 import PageSearchResults from '../pages/search/[terms]'
 import PageIndex from '../pages/index'
+import PageTvShowDetail from '../pages/tvshow/[tvshow]'
 
 describe('Test ListTvShows Page', () => {
   console.error = jest.fn()
@@ -41,6 +42,15 @@ describe('Test ListTvShows Page', () => {
 
   it('should render index page without errors', () => {
     const { baseElement } = render(<PageIndex />)
+    expect(baseElement).toBeTruthy()
+  })
+
+  it('should render show detail page without errors', () => {
+    const { baseElement } = render(
+      <Provider store={store}>
+        <PageTvShowDetail />
+      </Provider>
+    )
     expect(baseElement).toBeTruthy()
   })
 })
