@@ -12,7 +12,7 @@ import ArrowCircleRightTwoToneIcon from '@mui/icons-material/ArrowCircleRightTwo
 import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTone'
 import { getImage } from '../../utils'
 import { useRouter } from 'next/router'
-import { CSS } from '../styles'
+import { CSS } from '../../utils/styles'
 
 export default function MediaControlCard() {
   const tvShow: ITvShow = useSelector((state: RootState) => state.tvShow)

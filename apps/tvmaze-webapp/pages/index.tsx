@@ -1,4 +1,5 @@
 // todo: add PWA and add to readme
+// todo: increase font size in list and detail
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import TextField from '@mui/material/TextField'
@@ -9,7 +10,7 @@ import SlideshowTwoToneIcon from '@mui/icons-material/SlideshowTwoTone'
 import ScreenSearchDesktopTwoToneIcon from '@mui/icons-material/ScreenSearchDesktopTwoTone'
 import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone'
 import Typography from '@mui/material/Typography'
-import { CSS } from './styles'
+import { CSS } from '../utils/styles'
 import Card from '@mui/material/Card'
 import Box from '@mui/material/Box'
 import CardContent from '@mui/material/CardContent'
