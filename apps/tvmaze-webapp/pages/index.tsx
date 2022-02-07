@@ -1,5 +1,4 @@
 // todo: add PWA and add to readme
-// todo: increase font size in list and detail
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import TextField from '@mui/material/TextField'
