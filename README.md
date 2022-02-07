@@ -74,7 +74,7 @@ Run `npx nx dep-graph` to see a diagram of the dependencies of the project.
   - Domain entities are models like `ITvShow`, for example
   - Use of *Repository Pattern*
   - Use of *Singleton Pattern* to avoid creating new instances of repositories each re-render
-  - Use of *Master/Detail Pattern* to show information item information from a list of items
+  - Use of *Master/Detail Pattern*
 - Abstraction layer functionality is grouped in a library I created ad hoc called `react-query-crud` (based in React Query). In this case it only reads data but usually DAL executes CRUD operations
 - **Asynchronous State** is managed using [React Query](https://react-query.tanstack.com/) library:
   - It provides a cache system to manage `server state` (asynchronous requests): 
