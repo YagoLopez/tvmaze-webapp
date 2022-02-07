@@ -1,5 +1,3 @@
-// todo: readme
-// todo: comentar en readme.md que network requests están cacheadas
 import { useRouter } from 'next/router'
 import { TvShowsRepository } from '../../models/show/repositories/TvShowsRepository'
 import { IRepository, useRepository } from '@tvmaze-webapp/react-query-crud'

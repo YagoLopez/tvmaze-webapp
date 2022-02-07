@@ -1,4 +1,4 @@
-// todo: add PWA
+// todo: add PWA and add to readme
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 import TextField from '@mui/material/TextField'

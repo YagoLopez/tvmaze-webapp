@@ -1,94 +1,81 @@
 
 
-# TvmazeWebapp
+# TvMaze Webapp
 
 This project was generated using [Nx](https://nx.dev).
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+<p style="text-align: center;"><img alt="Nx logo" src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
 
-🔎 **Smart, Fast and Extensible Build System**
+## Demo
 
-## Adding capabilities to your workspace
+https://tvmaze-webapp-yagolopez.vercel.app/
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+## Install
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+Clone or download the repository
 
-Below are our core plugins:
-
-- [React](https://reactjs.org)
-  - `npm install --save-dev @nrwl/react`
-- Web (no framework frontends)
-  - `npm install --save-dev @nrwl/web`
-- [Angular](https://angular.io)
-  - `npm install --save-dev @nrwl/angular`
-- [Nest](https://nestjs.com)
-  - `npm install --save-dev @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `npm install --save-dev @nrwl/express`
-- [Node](https://nodejs.org)
-  - `npm install --save-dev @nrwl/node`
-
-There are also many [community plugins](https://nx.dev/community) you could add.
-
-## Generate an application
-
-Run `nx g @nrwl/react:app my-app` to generate an application.
-
-> You can use any of the plugins above to generate applications as well.
-
-When using Nx, you can create multiple applications and libraries in the same workspace.
-
-## Generate a library
-
-Run `nx g @nrwl/react:lib my-lib` to generate a library.
-
-> You can also use any of the plugins above to generate libraries as well.
-
-Libraries are shareable across libraries and applications. They can be imported from `@tvmaze-webapp/mylib`.
+Go to project directory and run `npm install` to install dependencies
 
 ## Development server
 
-Run `nx serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `nx g @nrwl/react:component my-component --project=my-app` to generate a new component.
+Run `npx nx serve crypto-values` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `nx build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `npx nx build tvmaze-webapp` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
 ## Running unit tests
 
-Run `nx test my-app` to execute the unit tests via [Jest](https://jestjs.io).
-
-Run `nx affected:test` to execute the unit tests affected by a change.
+Run `npx nx test tvmaze-webapp` to execute the unit tests via [Jest](https://jestjs.io).
 
 ## Running end-to-end tests
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+Run `npx nx run tvmaze-webapp-e2e:e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io) in headless mode
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+Run `npx nx run tvmaze-webapp-e2e:e2e --watch` to open Cypress UI and run tests in interactive mode
 
-## Understand your workspace
+## Running the linter
 
-Run `nx graph` to see a diagram of the dependencies of your projects.
+Run `npx nx run tvmaze-webapp:lint` to run the linter and to make static code analysis.
 
-## Further help
+## Understand the monorepo workspace
 
-Visit the [Nx Documentation](https://nx.dev) to learn more.
+This monorepo contains two projects:
+
+- An **app** called `tvmaze-webapp`
+- A **library** used by the app called `react-query-crud`
+
+Run `npx nx dep-graph` to see a diagram of the dependencies of the project.
+
+## Tech Stack
+
+- NextJS
+- TypeScript
+- Formatting and Static Code Analysis:
+  - Prettier
+  - ESLint
+- [Material UI](https://mui.com/) component library
+- Testing
+  - Unit Testing: Jest and React Testing Library
+  - E2E Testing: Cypress
 
 
+## Architecture
 
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+- **Use of a Data Abstraction Layer** (DAL)
+- **Decoupling of frontend from backend**: the purpose is to use a common interface with different implementations for real data, mock data or even Graphql. So changing the way of getting data should not affect front-end code
+- The app uses some **OOP principles and patterns**
+  - Domain entities are models like `ITvShow`, for example
+  - Use of *Repository Pattern*
+  - Use of *Singleton Pattern* to avoid creating new instances of repositories each re-render
+- Abstraction layer functionality is grouped in a library I created ad hoc called `react-query-crud` (based in React Query). In this case it only reads data but usually DAL executes CRUD operations
+- **Asynchronous State** is managed using [React Query](https://react-query.tanstack.com/) library:
+  - It provides a cache system to manage **server state** (asynchronous requests): 
+  - It optimizes and caches requests: requests made against TvMaze API endpoints with same parameters are loaded from browser cache avoiding new requests
+  - It keeps UI data updated making requests automatically when browser window recover focus
+  - Failure protection: If a request fails, React Query will try three times more before throwing an error
+- **Synchronous State** is managed using [Redux Toolkit](https://redux-toolkit.js.org/)
+  - Used for UI state
+  - Used for *synchronous* updates
+- There is an endpoint defined as Nextjs Servless Function
+  - [/api/mock-tvshows](https://tvmaze-webapp-yagolopez.vercel.app/api/mock-tvshows) It is used for testing purposes and returns mock data from a JSON file
