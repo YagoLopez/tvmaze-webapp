@@ -18,7 +18,7 @@ Go to project directory and run `npm install` to install dependencies
 
 ## Development server
 
-Run `npx nx serve crypto-values` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Run `npx nx serve tvmaze-webapp` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
 
 ## Build
 
@@ -33,6 +33,8 @@ Run `npx nx test tvmaze-webapp` to execute the unit tests via [Jest](https://jes
 Run `npx nx run tvmaze-webapp-e2e:e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io) in headless mode
 
 Run `npx nx run tvmaze-webapp-e2e:e2e --watch` to open Cypress UI and run tests in interactive mode
+
+Note: run e2e tests without using the development server to avoid port conflicts
 
 ## Running the linter
 
