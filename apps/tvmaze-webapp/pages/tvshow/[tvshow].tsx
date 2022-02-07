@@ -32,13 +32,13 @@ export default function MediaControlCard() {
         <Box sx={CSS.box}>
           <CardContent sx={CSS.card_content}>
             <Typography component="div" variant="h5">
-              {show.name}
+              {show?.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary" component="div">
-              {show.summary === null ? (
+            <Typography variant="body1" color="text.secondary" component="div">
+              {show?.summary === null ? (
                 <>No Information Available</>
               ) : (
-                <div dangerouslySetInnerHTML={{ __html: show.summary }} />
+                <div dangerouslySetInnerHTML={{ __html: show?.summary }} />
               )}
             </Typography>
             <Typography
@@ -46,8 +46,8 @@ export default function MediaControlCard() {
               color="text.secondary"
               component="div"
             >
-              <span>🗣️ {show.language}</span>
-              <span> *️⃣ Rating: {show.rating.average}</span>
+              <span>🗣️ {show?.language}</span>
+              <span> *️⃣ Rating: {show?.rating?.average}</span>
               <div>📺 Network: {show?.network?.name}</div>
             </Typography>
           </CardContent>
@@ -66,7 +66,7 @@ export default function MediaControlCard() {
               color="secondary"
               variant="contained"
               target="_blank"
-              href={show.url}
+              href={show?.url}
               endIcon={<ArrowCircleRightTwoToneIcon />}
             >
               Website
