@@ -74,14 +74,16 @@ Run `npx nx dep-graph` to see a diagram of the dependencies of the project.
   - Domain entities are models like `ITvShow`, for example
   - Use of *Repository Pattern*
   - Use of *Singleton Pattern* to avoid creating new instances of repositories each re-render
+  - Use of *Master/Detail Pattern* to show information item information from a list of items
 - Abstraction layer functionality is grouped in a library I created ad hoc called `react-query-crud` (based in React Query). In this case it only reads data but usually DAL executes CRUD operations
 - **Asynchronous State** is managed using [React Query](https://react-query.tanstack.com/) library:
-  - It provides a cache system to manage **server state** (asynchronous requests): 
+  - It provides a cache system to manage `server state` (asynchronous requests): 
   - It optimizes and caches requests: requests made against TvMaze API endpoints with same parameters are loaded from browser cache avoiding new requests
   - It keeps UI data updated making requests automatically when browser window recover focus
   - Failure protection: If a request fails, React Query will try three times more before throwing an error
 - **Synchronous State** is managed using [Redux Toolkit](https://redux-toolkit.js.org/)
-  - Used for UI state
-  - Used for *synchronous* updates
+  - Used for `UI state`
+  - Used for `synchronous` updates
+  - Used to pass the `TvShow` object chosen by the user from the `search results view` to the `detail page`
 - There is an endpoint defined as Nextjs Servless Function
-  - [/api/mock-tvshows](https://tvmaze-webapp-yagolopez.vercel.app/api/mock-tvshows) It is used for testing purposes and returns mock data from a JSON file
+  - [/api/mock-tvshows](https://tvmaze-webapp.vercel.app/api/mock-tvshows) It is used for testing purposes and returns mock data from a JSON file

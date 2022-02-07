@@ -59,7 +59,7 @@ export default function MediaControlCard() {
               startIcon={<ArrowCircleLeftTwoToneIcon />}
               onClick={onGoBackBtn}
             >
-              Search
+              Go back
             </Button>
             <Button
               sx={CSS.btn}
