@@ -82,8 +82,6 @@ Run `npx nx dep-graph` to see a diagram of the dependencies of the project.
   - It keeps UI data updated making requests automatically when browser window recover focus
   - Failure protection: If a request fails, React Query will try three times more before throwing an error
 - **Synchronous State** is managed using [Redux Toolkit](https://redux-toolkit.js.org/)
-  - Used for `UI state`
-  - Used for `synchronous` updates
-  - Used to pass the `TvShow` object chosen by the user from the `search results view` to the `detail page`
+  - Redux is used to pass the `TvShow` object chosen by the user from the `search results view` to the `details page`
 - There is an endpoint defined as Nextjs Servless Function
   - [/api/mock-tvshows](https://tvmaze-webapp.vercel.app/api/mock-tvshows) It is used for testing purposes and returns mock data from a JSON file
