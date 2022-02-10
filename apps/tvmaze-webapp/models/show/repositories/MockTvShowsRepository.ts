@@ -9,7 +9,7 @@ export class MockTvShowsRepository implements IRepository<ITvShow> {
   readonly axiosClient = axios.create({ baseURL: this.baseURL })
 
   getTvShowList = async (): Promise<ITvShow[]> => {
-    const { data } = await this.axiosClient.get(null)
+    const { data } = await this.axiosClient.get('/')
     return data
   }
 }

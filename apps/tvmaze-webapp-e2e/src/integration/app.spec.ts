@@ -32,7 +32,7 @@ describe('Tests End to End', () => {
 })
 
 describe('Test Deep Linking', () => {
-  beforeEach(() => cy.visit('http://localhost:4200/search/girls'))
+  beforeEach(() => cy.visit('https://tvmaze-webapp.vercel.app/search/girls'))
 
   it('should display search list correctly', () => {
     cy.get(SELECTOR1).contains(EXPECTED_TEXT2)

@@ -52,7 +52,7 @@ export default function PageIndex() {
                 component="div"
                 className="index-title"
               >
-                🎞️ Search for Tv Shows
+                📺 Search for Tv Shows
               </Typography>
               <TextField
                 sx={CSS.search_container}

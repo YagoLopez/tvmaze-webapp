@@ -30,5 +30,11 @@ export const CSS = {
   btn: { marginLeft: '1em', marginTop: '0.5em', marginBottom: '1em' },
   btn_search: { margin: 1, paddingLeft: 3, paddingRight: 3 },
   search_container: { display: 'flex', justifyContent: 'center' },
-  link_audit: { display: 'flex', justifyContent: 'center' },
+  link_audit: {
+    display: 'flex',
+    justifyContent: 'center',
+    position: 'absolute',
+    width: '100vw',
+    bottom: '2em',
+  },
 }

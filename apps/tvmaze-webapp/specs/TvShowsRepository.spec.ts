@@ -1,8 +1,7 @@
 import { TvShowsRepository } from '../models/show/repositories/TvShowsRepository'
 
-const SEARCH_STRING = 'girls'
-
 describe('test TvShowsRepository', () => {
+  const SEARCH_STRING = 'girls'
   let tvShowRepository = null
   let response = null
 

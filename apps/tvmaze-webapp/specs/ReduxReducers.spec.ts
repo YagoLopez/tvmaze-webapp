@@ -2,7 +2,7 @@ import { store } from '../redux/store'
 import { setTvShow } from '../redux/tvShowSlice'
 import { ITvShow } from '../models/show/ITvShow'
 
-const tvShow: ITvShow = {
+const TV_SHOW: ITvShow = {
   score: 0.9098699,
   show: {
     id: 139,
@@ -53,13 +53,12 @@ const tvShow: ITvShow = {
 describe('test redux reducers', () => {
   test('test initial empty state', () => {
     const state = store.getState()
-    store.dispatch(setTvShow(tvShow))
     expect(state.tvShow).toEqual({ score: null, show: null })
   })
 
   test('test setTvShow() action', () => {
-    store.dispatch(setTvShow(tvShow))
+    store.dispatch(setTvShow(TV_SHOW))
     const state = store.getState()
-    expect(state.tvShow).toEqual(tvShow)
+    expect(state.tvShow).toEqual(TV_SHOW)
   })
 })

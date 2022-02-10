@@ -24,8 +24,8 @@ export default function TvShowListItem({ tvShow }: IProps) {
     router.push(`/tvshow/${show.id}`, undefined, { shallow: true })
   }
 
-  const truncate = (str: string, n: number): string =>
-    str.length > n ? `${str.substring(0, n - 1)}&hellip;` : str
+  const truncate = (str: string, length: number): string =>
+    str.length > length ? `${str.substring(0, length - 1)}&hellip;` : str
 
   return (
     <ListItemButton
