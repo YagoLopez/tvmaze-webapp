@@ -10,8 +10,6 @@ export const CSS = {
   card: {
     display: 'flex',
     width: 500,
-    maxHeight: 500,
-    overflowY: 'auto',
     borderColor: 'lightgrey',
     borderStyle: 'solid',
     borderWidth: '1px',
@@ -27,6 +25,11 @@ export const CSS = {
   card_media: { width: '40%' },
   box: { display: 'flex', flexDirection: 'column' },
   card_content: { flex: '1 0 auto' },
+  card_content_detail: {
+    flex: '1 0 auto',
+    maxHeight: 200,
+    overflowY: 'auto',
+  },
   btn: { marginLeft: '1em', marginTop: '0.5em', marginBottom: '1em' },
   btn_search: { margin: 1, paddingLeft: 3, paddingRight: 3 },
   search_container: { display: 'flex', justifyContent: 'center' },
@@ -36,5 +39,9 @@ export const CSS = {
     position: 'absolute',
     width: '100vw',
     bottom: '2em',
+  },
+  details: {
+    marginLeft: '1.4em',
+    marginTop: '1em',
   },
 }

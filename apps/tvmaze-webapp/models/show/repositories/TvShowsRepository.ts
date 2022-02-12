@@ -8,13 +8,10 @@ export class TvShowsRepository implements IRepository<ITvShow> {
   readonly baseURL = 'https://api.tvmaze.com/search/'
   readonly axiosClient = axios.create({ baseURL: this.baseURL })
 
-  private getData = async (searchString: string) => {
+  getTvShowList = async (searchString: string): Promise<ITvShow[]> => {
     const { data } = await this.axiosClient.get<ITvShow[]>(
       `shows?q=${searchString}`
     )
     return data
   }
-
-  getTvShowList = async (searchString: string): Promise<ITvShow[]> =>
-    this.getData(searchString)
 }

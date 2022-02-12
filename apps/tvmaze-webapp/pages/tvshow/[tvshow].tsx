@@ -1,4 +1,5 @@
 // todo: redirect to index if no show in store
+// todo: on click image
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import Box from '@mui/material/Box'
@@ -10,7 +11,7 @@ import { ITvShow } from '../../models/show/ITvShow'
 import Button from '@mui/material/Button'
 import ArrowCircleRightTwoToneIcon from '@mui/icons-material/ArrowCircleRightTwoTone'
 import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTone'
-import { getImage } from '../../utils'
+import { getImage, parseString } from '../../utils'
 import { useRouter } from 'next/router'
 import { CSS } from '../../utils/styles'
 
@@ -30,7 +31,7 @@ export default function PageTvShowDetail() {
           alt="Tv Show Image Cover"
         />
         <Box sx={CSS.box}>
-          <CardContent sx={CSS.card_content}>
+          <CardContent sx={CSS.card_content_detail}>
             <Typography component="div" variant="h5">
               {show?.name}
             </Typography>
@@ -41,17 +42,19 @@ export default function PageTvShowDetail() {
                 <div dangerouslySetInnerHTML={{ __html: show?.summary }} />
               )}
             </Typography>
+          </CardContent>
+          <div>
             <Typography
+              sx={CSS.details}
               variant="caption"
               color="text.secondary"
               component="div"
             >
               <span>🗣️ {show?.language}</span>
-              <span> *️⃣ Rating: {show?.rating?.average}</span>
-              <div>📺 Network: {show?.network?.name}</div>
+              <span> *️⃣ Rating: {parseString(show?.rating?.average)}</span>
+              <div>📺 Network: {parseString(show?.network?.name)}</div>
             </Typography>
-          </CardContent>
-          <div>
+
             <Button
               sx={CSS.btn}
               color="primary"
