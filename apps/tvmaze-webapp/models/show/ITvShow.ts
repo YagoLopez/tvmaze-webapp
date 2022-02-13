@@ -1,4 +1,5 @@
 import { ICountry } from '../ICountry'
+import { IImage } from '../IImage'
 
 export interface ITvShow {
   score: number
@@ -27,7 +28,7 @@ export interface ITvShow {
     webChannel: { id: number; name: string; country: ICountry }
     dvdCountry: null
     externals: { tvrage: number; thetvdb: number; imdb: string }
-    image: { medium: string; original: string }
+    image: IImage
     summary: string
     updated: number
     _links: { self: { href: string }; previousepisode: { href: string } }

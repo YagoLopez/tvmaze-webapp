@@ -22,7 +22,10 @@ export const CSS = {
     borderStyle: 'solid',
     borderWidth: '1px',
   },
-  card_media: { width: '40%' },
+  card_media: {
+    width: '40%',
+    cursor: 'pointer',
+  },
   box: { display: 'flex', flexDirection: 'column' },
   card_content: { flex: '1 0 auto' },
   card_content_detail: {

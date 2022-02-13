@@ -1,5 +1,4 @@
 // todo: redirect to index if no show in store
-// todo: on click image
 import { useSelector } from 'react-redux'
 import { RootState } from '../../redux/store'
 import Box from '@mui/material/Box'
@@ -14,21 +13,27 @@ import ArrowCircleLeftTwoToneIcon from '@mui/icons-material/ArrowCircleLeftTwoTo
 import { getImage, parseString } from '../../utils'
 import { useRouter } from 'next/router'
 import { CSS } from '../../utils/styles'
+import { IMG_SIZE } from '../../models/EnumImageSize'
 
 export default function PageTvShowDetail() {
   const tvShow: ITvShow = useSelector((state: RootState) => state.tvShow)
   const router = useRouter()
   const { show } = tvShow
   const onGoBackBtn = () => router.back()
+  const onClickImg = (img: string) => {
+    window.open(img)
+  }
 
   return (
     <div className="scale-in-center" style={CSS.container}>
       <Card sx={CSS.card}>
         <CardMedia
+          onClick={() => onClickImg(getImage(show, IMG_SIZE.LARGE))}
           component="img"
           sx={CSS.card_media}
           image={getImage(show)}
-          alt="Tv Show Image Cover"
+          alt="Image Cover"
+          title="Show Cover"
         />
         <Box sx={CSS.box}>
           <CardContent sx={CSS.card_content_detail}>
